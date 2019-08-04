@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../styles/base';
+import { colors } from '../components/base';
 import { StatusBar } from 'react-native';
 import Footer from '../components/Footer';
 import ActionList from '../components/ActionList';

@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { P } from '../styles/base';
+import { P } from './base';
 
-const Icon = (name, color, size) => {
+const Icon = () => {
     return (
-        <StyledIcon>
-            <P>Icon</P>
-        </StyledIcon>
+        <StyledIcon>Icon</StyledIcon>
     );
 }
 
-const StyledIcon = styled.View`
-    
+const StyledIcon = styled(P)`
+
 `
 
 export default Icon;

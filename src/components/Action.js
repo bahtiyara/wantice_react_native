@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Caption, padding, colors } from '../styles/base';
+import { Input, Caption, padding, colors } from './base';
 
 const Action = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { H1, padding } from '../styles/base';
+import { H1, padding } from './base';
 
 const TitleBar = ({title}) => {
     return (

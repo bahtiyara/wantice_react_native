@@ -58,7 +58,3 @@ export const H1 = styled.Text`${styles.h1}`
 export const P = styled.Text`${styles.p}`
 export const Input = styled.TextInput`${styles.p}`
 export const Caption = styled.Text`${styles.caption}`
-
-// export const Input = styled.TextInput.attrs(props => ({
-//     placeholder: props.placeholder,
-// }))`${styles.p}`

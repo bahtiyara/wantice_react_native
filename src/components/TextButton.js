@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { P, padding } from '../styles/base';
-import Icon from './Icon';
+import { P, padding } from './base';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const TextButton = () => {
     return (
         <StyledTextButton>
-            <Icon></Icon>
+            <Icon name="add" size={24} color="white"/>
             <ButtonText>TextButton</ButtonText>
         </StyledTextButton>
     );

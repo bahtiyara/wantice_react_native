@@ -14,12 +14,12 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1F1161B23332DCBD54474F1D /* libPods-wantice_react_native-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167FCF176514C91C36C0FA31 /* libPods-wantice_react_native-tvOS.a */; };
-		2BC14FABF617122240230C43 /* libPods-wantice_react_native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF30BDA1CF28976808E488 /* libPods-wantice_react_native.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* wantice_react_nativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wantice_react_nativeTests.m */; };
 		6E6A946FB85B7C07AF262CC2 /* libPods-wantice_react_native-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9066396E02607A0FA577B508 /* libPods-wantice_react_native-tvOSTests.a */; };
+		ACD8DC0122F6F561007C405D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACD8DC0022F6F561007C405D /* MaterialIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +60,7 @@
 		7F4DC5E624AFFC44F0337DCE /* Pods-wantice_react_nativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wantice_react_nativeTests.debug.xcconfig"; path = "Target Support Files/Pods-wantice_react_nativeTests/Pods-wantice_react_nativeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		888683E35C4A560C232074F1 /* Pods-wantice_react_nativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wantice_react_nativeTests.release.xcconfig"; path = "Target Support Files/Pods-wantice_react_nativeTests/Pods-wantice_react_nativeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9066396E02607A0FA577B508 /* libPods-wantice_react_native-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wantice_react_native-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD8DC0022F6F561007C405D /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		B1D8AEE7E2D32AC09CF8AC7D /* Pods-wantice_react_native-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wantice_react_native-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-wantice_react_native-tvOS/Pods-wantice_react_native-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C95EBF6FF0D797645B544B /* Pods-wantice_react_native.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wantice_react_native.release.xcconfig"; path = "Target Support Files/Pods-wantice_react_native/Pods-wantice_react_native.release.xcconfig"; sourceTree = "<group>"; };
 		EB6BECE67706CA3CA1EF19C3 /* Pods-wantice_react_native-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wantice_react_native-tvOS.release.xcconfig"; path = "Target Support Files/Pods-wantice_react_native-tvOS/Pods-wantice_react_native-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BC14FABF617122240230C43 /* libPods-wantice_react_native.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +161,6 @@
 				7F4DC5E624AFFC44F0337DCE /* Pods-wantice_react_nativeTests.debug.xcconfig */,
 				888683E35C4A560C232074F1 /* Pods-wantice_react_nativeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +174,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				ACD8DC0022F6F561007C405D /* MaterialIcons.ttf */,
 				13B07FAE1A68108700A75B9A /* wantice_react_native */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* wantice_react_nativeTests */,
@@ -308,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +339,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				ACD8DC0122F6F561007C405D /* MaterialIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
