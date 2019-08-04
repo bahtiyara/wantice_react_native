@@ -10,6 +10,8 @@ const ActionList = () => {
             <Action />
             <Action />
             <Action />
+            <Action />
+            <Action />
         </StyledActionList>
     );
 }

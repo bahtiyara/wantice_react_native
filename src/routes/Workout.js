@@ -4,12 +4,14 @@ import { colors } from '../styles/base';
 import { StatusBar } from 'react-native';
 import Footer from '../components/Footer';
 import ActionList from '../components/ActionList';
+import TextButton from '../components/TextButton';
 
 const Workout = () => {
     return (
         <StyledWorkout>
             <StatusBar barStyle="light-content"/>
             <ActionList />
+            <TextButton />
             <Footer />
         </StyledWorkout>
     );
