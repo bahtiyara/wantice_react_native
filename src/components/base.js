@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // -------------- Props -------------- //
 
@@ -50,7 +51,11 @@ export const styles = StyleSheet.create({
         color: colors.secondaryText,
         fontWeight: fonts.regular,
         lineHeight: 24,
-    }
+    },
+    icon: {
+        fontSize: 24,
+        color: colors.primary,
+    },
 })
 
 // -------------- Components -------------- //
@@ -58,3 +63,4 @@ export const H1 = styled.Text`${styles.h1}`
 export const P = styled.Text`${styles.p}`
 export const Input = styled.TextInput`${styles.p}`
 export const Caption = styled.Text`${styles.caption}`
+export const Ico = styled(Icon)`${styles.icon}`
