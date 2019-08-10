@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { P, padding, Ico, colors } from './base';
 
-const TextButton = ({iconName, children}) => {
+const TextButton = ({iconName, children, style}) => {
     return (
-        <StyledTextButton>
+        <StyledTextButton style={style}>
             <ButtonIcon name={iconName}/>
             <ButtonText>{children}</ButtonText>
         </StyledTextButton>

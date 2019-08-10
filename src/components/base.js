@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-// -------------- Props -------------- //
+// -------------- Variables -------------- //
 
 export const colors  = {
     primary: '#F72B35',
@@ -29,6 +29,8 @@ export const fonts = {
     medium: '500',
     semibold: '600',
 }
+
+// -------------- Styles -------------- //
 
 export const styles = StyleSheet.create({
     p: {
