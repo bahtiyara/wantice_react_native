@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Input, Caption, padding, colors } from './base';
+import BlockButton from './BlockButton';
 
 const Action = () => {
     return (
@@ -10,14 +11,15 @@ const Action = () => {
                 <ActionTitle defaultValue="深蹲" placeholder="动作名称" />
                 <ActionAmount>4组 * 12</ActionAmount>
             </ActionContent>
+            <ActionOption iconName="delete"></ActionOption>
         </StyledAction>
     );
 }
 
 const StyledAction = styled.View`
+    flex-direction: row;
     padding: 0 ${padding.lg}px;
     height: 64px;
-    flex-direction: row;
     align-items: center;
 `;
 
@@ -47,5 +49,11 @@ const ActionAmount = styled(Caption)`
     margin-left: 10px;
     line-height: 64px;
 `;
+
+const ActionOption = styled(BlockButton)`
+    position: absolute;
+    /* 这里有潜在 Bug，不应该写死 80px */
+    right: -80px;
+`
 
 export default Action;
