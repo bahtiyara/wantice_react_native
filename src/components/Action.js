@@ -1,26 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Input, Caption, padding, colors } from './base';
-import BlockButton from './BlockButton';
+import { Input, Caption, padding, colors, Ico } from './base';
+import { Text } from 'react-native';
 
-const Action = () => {
-    return (
-        <StyledAction>
-            <ActionNum>1</ActionNum>
-            <ActionContent>
-                <ActionTitle defaultValue="深蹲" placeholder="动作名称" />
-                <ActionAmount>4组 * 12</ActionAmount>
-            </ActionContent>
-            <ActionOption iconName="delete"></ActionOption>
-        </StyledAction>
-    );
+class Action extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <StyledAction>
+                <ActionCell>
+                    <ActionNum>1</ActionNum>
+                    <ActionContent>
+                        <ActionTitle
+                            defaultValue="深蹲"
+                            placeholder="动作名称"/>
+                        <ActionAmount>4组 * 12</ActionAmount>
+                    </ActionContent>
+                </ActionCell>
+                <ActionRemove name="delete" />
+            </StyledAction>
+        );
+    }
 }
 
 const StyledAction = styled.View`
+    justify-content: center;
+`;
+
+const ActionCell = styled.TouchableOpacity`
     flex-direction: row;
     padding: 0 ${padding.lg}px;
     height: 64px;
     align-items: center;
+    background-color: ${colors.background};
+`;
+
+const ActionRemove = styled(Ico)`
+    z-index: -1;
+    position: absolute;
+    right: 25px;
+    color: ${colors.thirdText};
 `;
 
 const ActionNum = styled(Caption)`
@@ -49,11 +71,5 @@ const ActionAmount = styled(Caption)`
     margin-left: 10px;
     line-height: 64px;
 `;
-
-const ActionOption = styled(BlockButton)`
-    position: absolute;
-    /* 这里有潜在 Bug，不应该写死 80px */
-    right: -80px;
-`
 
 export default Action;

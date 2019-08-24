@@ -14,9 +14,6 @@ const Footer = ({children, desc}) => {
 const StyledFooter = styled.View`
     background: ${colors.background};
     align-items: center;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
     box-shadow: 0 -10px 20px ${colors.background};
 `
 
