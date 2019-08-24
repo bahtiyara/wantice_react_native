@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Input, Caption, padding, colors, Ico } from './base';
-import { Text } from 'react-native';
 
 class Action extends Component {
     constructor(props) {
@@ -30,7 +29,7 @@ const StyledAction = styled.View`
     justify-content: center;
 `;
 
-const ActionCell = styled.TouchableOpacity`
+const ActionCell = styled.View`
     flex-direction: row;
     padding: 0 ${padding.lg}px;
     height: 64px;

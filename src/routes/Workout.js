@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors, padding } from '../components/base';
-import { StatusBar, ScrollView } from 'react-native';
+import { StatusBar } from 'react-native';
 import Footer from '../components/Footer';
 import ActionList from '../components/ActionList';
 import TextButton from '../components/TextButton';
