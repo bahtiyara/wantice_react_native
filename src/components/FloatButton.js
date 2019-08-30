@@ -17,7 +17,7 @@ const StyledFloatButton = styled.View`
     background: ${props => props.bgColor ? props.iconColor : colors.primary};
     width: 85px;
     height: 85px;
-    border-radius: 85px;
+    border-radius: 1000px;
     justify-content: center;
     align-items: center;
 `;

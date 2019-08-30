@@ -1,47 +1,81 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Input, Caption, padding, colors, Ico } from './base';
+import { Input, Caption, padding, colors } from './base';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { Animated, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-class Action extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
+const Action = () => {
+    return (
+        <Swipeable
+            renderRightActions={RightOption}
+            onSwipeableRightOpen={onSwipeFromRight}
+            rightThreshold={100}
+        >
             <StyledAction>
-                <ActionCell>
-                    <ActionNum>1</ActionNum>
-                    <ActionContent>
-                        <ActionTitle
-                            defaultValue="深蹲"
-                            placeholder="动作名称"/>
+                <ActionNum>1</ActionNum>
+                <ActionContent>
+                    <ActionTitle
+                        defaultValue="深蹲"
+                        placeholder="动作名称"
+                    />
+                    <TouchableOpacity>
                         <ActionAmount>4组 * 12</ActionAmount>
-                    </ActionContent>
-                </ActionCell>
-                <ActionRemove name="delete" />
+                    </TouchableOpacity>
+                </ActionContent>
             </StyledAction>
-        );
+        </Swipeable>
+    );
+}
+
+function onSwipeFromRight() {
+    alert('You deleted');
+}
+
+const RightOption = (progress, dragX) => {
+    const trans = dragX.interpolate({
+        inputRange: [-100, 0],
+        outputRange: [true, false],
+        extrapolate: 'clamp',
+    });
+
+    dragX.addListener(({value}) => this._value = value);
+    console.log(dragX._value);
+
+    return (
+        <ActionRemove>
+            <AnimatedIcon
+                style={removeIconStyle()}
+                name="delete"
+            />
+        </ActionRemove>
+    );
+}
+
+
+
+const removeIconStyle = function (canRemove) {
+    return {
+        fontSize: 24,
+        marginRight: padding.lg - 5,
+        color: canRemove ? 'rgba(247,43,53,1)' : 'rgba(255,255,255,0.3)',
     }
 }
 
-const StyledAction = styled.View`
-    justify-content: center;
-`;
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
-const ActionCell = styled.View`
+const StyledAction = styled.View`
+    background-color: ${colors.background};
     flex-direction: row;
     padding: 0 ${padding.lg}px;
     height: 64px;
     align-items: center;
-    background-color: ${colors.background};
 `;
 
-const ActionRemove = styled(Ico)`
-    z-index: -1;
-    position: absolute;
-    right: 25px;
-    color: ${colors.thirdText};
+const ActionRemove = styled.View`
+    justify-content: center;
+    flex: 1;
+    align-items: flex-end;
 `;
 
 const ActionNum = styled(Caption)`
