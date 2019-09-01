@@ -1,68 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Input, Caption, padding, colors } from './base';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { Animated, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { TouchableOpacity } from 'react-native';
 
-const Action = () => {
-    return (
-        <Swipeable
-            renderRightActions={RightOption}
-            onSwipeableRightOpen={onSwipeFromRight}
-            rightThreshold={100}
-        >
-            <StyledAction>
-                <ActionNum>1</ActionNum>
-                <ActionContent>
-                    <ActionTitle
-                        defaultValue="深蹲"
-                        placeholder="动作名称"
-                    />
-                    <TouchableOpacity>
-                        <ActionAmount>4组 * 12</ActionAmount>
-                    </TouchableOpacity>
-                </ActionContent>
-            </StyledAction>
-        </Swipeable>
-    );
-}
-
-function onSwipeFromRight() {
-    alert('You deleted');
-}
-
-const RightOption = (progress, dragX) => {
-    const trans = dragX.interpolate({
-        inputRange: [-100, 0],
-        outputRange: [true, false],
-        extrapolate: 'clamp',
-    });
-
-    dragX.addListener(({value}) => this._value = value);
-    console.log(dragX._value);
-
-    return (
-        <ActionRemove>
-            <AnimatedIcon
-                style={removeIconStyle()}
-                name="delete"
-            />
-        </ActionRemove>
-    );
-}
-
-
-
-const removeIconStyle = function (canRemove) {
-    return {
-        fontSize: 24,
-        marginRight: padding.lg - 5,
-        color: canRemove ? 'rgba(247,43,53,1)' : 'rgba(255,255,255,0.3)',
+class Action extends Component {
+    constructor(props) {
+        super(props);
+        this.onSwipe = this.onSwipe.bind(this);
     }
-}
 
-const AnimatedIcon = Animated.createAnimatedComponent(Icon);
+    render() {
+        return (
+            <Swipeable
+                ref={component => this._swipeable = component}
+                renderRightActions={this.renderOption}
+                renderLeftActions={this.renderOption}
+                onSwipeableRightOpen={this.onSwipe}
+                onSwipeableLeftOpen={this.onSwipe}
+                rightThreshold={100}
+                leftThreshold={100}
+            >
+                <StyledAction>
+                    <ActionNum>1</ActionNum>
+                    <ActionContent>
+                        <ActionTitle
+                            defaultValue="深蹲"
+                            placeholder="动作名称"
+                            placeholderTextColor={colors.thirdText}
+                        />
+                        <TouchableOpacity>
+                            <ActionAmount>4组 * 12</ActionAmount>
+                        </TouchableOpacity>
+                    </ActionContent>
+                </StyledAction>
+            </Swipeable>
+        );
+    }
+
+    onSwipe() {
+        alert('Removed!');
+    }
+
+    renderOption = () => <ActionRemove />;
+}
 
 const StyledAction = styled.View`
     background-color: ${colors.background};
