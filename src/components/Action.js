@@ -8,12 +8,15 @@ class Action extends Component {
     constructor(props) {
         super(props);
         this.onSwipe = this.onSwipe.bind(this);
+        this.onTitleFocus = this.onTitleFocus.bind(this);
+        this.state = {
+            titleBorderBottom: 0
+        }
     }
 
     render() {
         return (
             <Swipeable
-                ref={component => this._swipeable = component}
                 renderRightActions={this.renderOption}
                 renderLeftActions={this.renderOption}
                 onSwipeableRightOpen={this.onSwipe}
@@ -25,6 +28,8 @@ class Action extends Component {
                     <ActionNum>1</ActionNum>
                     <ActionContent>
                         <ActionTitle
+                            onfocus={this.onTitleFocus}
+                            borderBottom={this.state.titleBorderBottom}
                             defaultValue="深蹲"
                             placeholder="动作名称"
                             placeholderTextColor={colors.thirdText}
@@ -36,6 +41,11 @@ class Action extends Component {
                 </StyledAction>
             </Swipeable>
         );
+    }
+
+    onTitleFocus() {
+        // this.setState({titleBorderBottom: 2});
+        alert('ss');
     }
 
     onSwipe() {
@@ -79,6 +89,8 @@ const ActionContent = styled.View`
 const ActionTitle = styled(Input)`
     flex: 1;
     height: 64px;
+    border-bottom-color: ${colors.primaryText};
+    border-bottom-width: ${props => props.borderBottom}px;
 `;
 
 const ActionAmount = styled(Caption)`
