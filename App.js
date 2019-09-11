@@ -5,13 +5,13 @@ import Workout from './src/routes/Workout';
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <StyledSafeAreaView>
       <Workout />
-    </SafeAreaView>
+    </StyledSafeAreaView>
   );
 };
 
-const SafeAreaView = styled.SafeAreaView`
+const StyledSafeAreaView = styled.SafeAreaView`
   background-color: ${colors.background};
 `
 

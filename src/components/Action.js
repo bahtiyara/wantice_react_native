@@ -15,6 +15,8 @@ class Action extends Component {
     }
 
     render() {
+        const {pos, name, set, rep} = this.props;
+        
         return (
             <Swipeable
                 renderRightActions={this.renderOption}
@@ -25,17 +27,17 @@ class Action extends Component {
                 leftThreshold={100}
             >
                 <StyledAction>
-                    <ActionNum>1</ActionNum>
+                    <ActionNum>{pos}</ActionNum>
                     <ActionContent>
                         <ActionTitle
                             onfocus={this.onTitleFocus}
                             borderBottom={this.state.titleBorderBottom}
-                            defaultValue="深蹲"
+                            defaultValue={name}
                             placeholder="动作名称"
                             placeholderTextColor={colors.thirdText}
                         />
                         <TouchableOpacity>
-                            <ActionAmount>4组 * 12</ActionAmount>
+                            <ActionAmount>{set} × {rep}次</ActionAmount>
                         </TouchableOpacity>
                     </ActionContent>
                 </StyledAction>
