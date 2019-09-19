@@ -4,8 +4,11 @@ export const FETCH_WORKOUT = "FETCH_WORKOUT";
 
 const defaultData = {
     current: {
-        action: "a1",
-        set: 3,
+        // 0 is todo, 1 is done
+        status: 0,
+        action: 1,
+        set: 1,
+        rep: 1,
     },
     workout: {
         name: "今日训练",
@@ -38,7 +41,7 @@ const defaultData = {
 
 export function fetchWorkout() {
     try {
-        const workout = AsyncStorage.getItem('data')
+        const workout = AsyncStorage.getItem('data');
         if(workout == null) {
             AsyncStorage.setItem('data', JSON.stringify(defaultData));
         } else {

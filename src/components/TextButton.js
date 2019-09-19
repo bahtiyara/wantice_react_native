@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { P, padding, Ico, colors } from './base';
 
-const TextButton = ({iconName, children, style}) => {
+const TextButton = ({iconName, children, style, onPress}) => {
     return (
-        <StyledTextButton style={style}>
+        <StyledTextButton onPress={onPress} style={style}>
             <ButtonIcon name={iconName}/>
             <ButtonText>{children}</ButtonText>
         </StyledTextButton>
     );
 }
 
-const StyledTextButton = styled.View`
+const StyledTextButton = styled.TouchableOpacity`
     /* padding: ${padding.md}px ${padding.lg}px; */
     flex-direction: row;
 `;

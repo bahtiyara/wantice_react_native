@@ -12,10 +12,14 @@ import { connect } from 'react-redux';
 class Workout extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            finishTime: new Date(),
+        }
     }
 
     componentDidMount() {
         this.props.fetchWorkout();
+        setInterval(() => this.setFinishTime(), 10000);
     }
 
     render() {
@@ -25,18 +29,87 @@ class Workout extends Component {
                 <StatusBar barStyle="light-content"/>
                 <StyledScrollView>
                     <ActionList data={workout} />
-                    <StyledTextButton iconName='add'>添加动作</StyledTextButton>
+                    <StyledTextButton
+                        iconName='add'
+                        onPress={this.onCreateActionPress}
+                    >添加动作</StyledTextButton>
                 </StyledScrollView>
-                <Footer desc="预计 19:10 结束">
+                <Footer desc={this.getDescription()}>
                     <FloatButton iconName="play-arrow"/>
                 </Footer>
             </StyledWorkout>
         );
     }
+
+    getDescription() {
+        const {workout} = this.props;
+        if (workout !== null) {
+            if (workout.current.status == 0) {
+                // When workout is not finish()
+                return `预计${("0" + this.state.finishTime.getHours()).slice(-2)}:${("0" + this.state.finishTime.getMinutes()).slice(-2)}结束`;
+            } else {
+                // When workout is finish
+                return this.getWorkoutDuration();
+            }
+        }
+    }
+
+    setFinishTime() {
+        const {current} = this.props.workout;
+        const {workout} = this.props.workout;
+        const thisAction = workout.action[current.action - 1];
+        let nextActionsLeft = 0;
+
+        // thisActionLeft
+        const thisSetLeft = (thisAction.rep - current.rep) * thisAction.repDuration + thisAction.setInterval;
+        const nextSetsLeft = (thisAction.set - current.set) * this.getSetDuration(thisAction) - thisAction.setInterval;
+        const thisActionLeft = thisSetLeft + nextSetsLeft;
+
+        // nextActionsLeft
+        if (current.action !== workout.action.length) {
+            for (let i = current.action; i < workout.action.length; i++) {
+                const action = workout.action[i];
+                nextActionsLeft = nextActionsLeft + this.getActionDuration(action);
+            }
+        }
+        
+        const duration = thisActionLeft + nextActionsLeft;
+        const currentTime = new Date();
+        const finishTime = new Date(currentTime.setSeconds(currentTime.getSeconds() + duration));
+
+        this.setState({finishTime});
+    }
+
+    getSetDuration(action) {
+        return action.rep * action.repDuration + action.setInterval;
+    }
+
+    getActionDuration(action) {
+        return this.getSetDuration(action) * action.set - action.setInterval + action.actionInterval;
+    }
+
+    getWorkoutDuration() {
+        return "花时50分钟";
+    }
+
+    onCreateActionPress = () => {
+        const {workout} = this.props;
+        const newAction = {
+            id: "a2",
+            name: "",
+            pos: workout.workout.action.length + 1,
+            set: 3,
+            rep: 12,
+            repDuration: 3,
+            setDuration: null,
+            setInterval: 60,
+            actionInterval: 120
+        };
+    }
 }
 
 function mapStateToProps({workout}) {
-    return {workout}
+    return {workout};
 }
 
 const StyledWorkout = styled.View`
