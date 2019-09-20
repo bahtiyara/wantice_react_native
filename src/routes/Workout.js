@@ -8,8 +8,6 @@ import TextButton from '../components/TextButton';
 import FloatButton from '../components/FloatButton';
 import { fetchWorkout } from '../actions/index';
 import { connect } from 'react-redux';
-// import uniqueString from 'unique-string';
-// import uniqueId from 'react-native-unique-id';
 
 class Workout extends Component {
     constructor(props) {
@@ -97,9 +95,6 @@ class Workout extends Component {
 
     onCreateActionPress() {
         const {workout} = this.props;
-        // uniqueId()
-        //     .then(id => console.log(id))
-        //     .catch(error => console.error(error));
         const newAction = {
             id: "uniqueString",
             name: "",
@@ -111,7 +106,6 @@ class Workout extends Component {
             setInterval: 60,
             actionInterval: 120
         };
-        console.log("uniqueString");
     }
 }
 
