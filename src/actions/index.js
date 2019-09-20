@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const FETCH_WORKOUT = "FETCH_WORKOUT";
+export const ADD_ACTION = "ADD_ACTION";
 
 const defaultData = {
     current: {
@@ -52,5 +53,19 @@ export function fetchWorkout() {
         }
     } catch(e) {
         console.log(e);
-    }    
+    }
+}
+
+export function addAction(workout, callback) {
+    try {
+        AsyncStorage.setItem('data', JSON.stringify(workout), () => callback());
+        const newWorkout = AsyncStorage.getItem('data');
+        return {
+            type: ADD_ACTION,
+            payload: newWorkout
+        }
+    } catch (e) {
+        console.log(e);
+    }
+    
 }

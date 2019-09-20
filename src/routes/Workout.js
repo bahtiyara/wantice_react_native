@@ -6,9 +6,9 @@ import Footer from '../components/Footer';
 import ActionList from '../components/ActionList';
 import TextButton from '../components/TextButton';
 import FloatButton from '../components/FloatButton';
-import { fetchWorkout } from '../actions/index';
+import { fetchWorkout, addAction } from '../actions/index';
 import { connect } from 'react-redux';
-var uuid = require('react-native-uuid');
+import uuid from 'react-native-uuid';
 
 class Workout extends Component {
     constructor(props) {
@@ -95,7 +95,7 @@ class Workout extends Component {
     }
 
     onCreateActionPress() {
-        const {workout} = this.props;
+        let {workout} = this.props;
         const newAction = {
             id: uuid.v1(),
             name: "",
@@ -107,7 +107,13 @@ class Workout extends Component {
             setInterval: 60,
             actionInterval: 120
         };
-        console.log(newAction);
+        workout.workout.action.push(newAction);
+        this.props.addAction(workout, () => {
+            // 滚动到最小面
+
+            // 聚焦于新动作
+            
+        });
     }
 }
 
@@ -130,4 +136,4 @@ const StyledTextButton = styled(TextButton)`
     padding: ${padding.md}px ${padding.lg}px;
 `;
 
-export default connect(mapStateToProps, {fetchWorkout})(Workout);
+export default connect(mapStateToProps, {fetchWorkout, addAction})(Workout);
