@@ -6,6 +6,8 @@ import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux';
 import reducer from './src/reducers/index';
 import promise from 'redux-promise';
+import { Buffer } from 'buffer';
+global.Buffer = Buffer; // very important
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 

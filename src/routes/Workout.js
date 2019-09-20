@@ -8,6 +8,7 @@ import TextButton from '../components/TextButton';
 import FloatButton from '../components/FloatButton';
 import { fetchWorkout } from '../actions/index';
 import { connect } from 'react-redux';
+var uuid = require('react-native-uuid');
 
 class Workout extends Component {
     constructor(props) {
@@ -96,7 +97,7 @@ class Workout extends Component {
     onCreateActionPress() {
         const {workout} = this.props;
         const newAction = {
-            id: "uniqueString",
+            id: uuid.v1(),
             name: "",
             pos: workout.workout.action.length + 1,
             set: 3,
@@ -106,6 +107,7 @@ class Workout extends Component {
             setInterval: 60,
             actionInterval: 120
         };
+        console.log(newAction);
     }
 }
 
