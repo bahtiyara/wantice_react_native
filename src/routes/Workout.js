@@ -8,6 +8,8 @@ import TextButton from '../components/TextButton';
 import FloatButton from '../components/FloatButton';
 import { fetchWorkout } from '../actions/index';
 import { connect } from 'react-redux';
+// import uniqueString from 'unique-string';
+// import uniqueId from 'react-native-unique-id';
 
 class Workout extends Component {
     constructor(props) {
@@ -15,11 +17,12 @@ class Workout extends Component {
         this.state = {
             finishTime: new Date(),
         }
+        this.onCreateActionPress = this.onCreateActionPress.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchWorkout();
-        setInterval(() => this.setFinishTime(), 10000);
+        setInterval(() => this.setFinishTime(), 1000);
     }
 
     render() {
@@ -92,10 +95,13 @@ class Workout extends Component {
         return "花时50分钟";
     }
 
-    onCreateActionPress = () => {
+    onCreateActionPress() {
         const {workout} = this.props;
+        // uniqueId()
+        //     .then(id => console.log(id))
+        //     .catch(error => console.error(error));
         const newAction = {
-            id: "a2",
+            id: "uniqueString",
             name: "",
             pos: workout.workout.action.length + 1,
             set: 3,
@@ -105,6 +111,7 @@ class Workout extends Component {
             setInterval: 60,
             actionInterval: 120
         };
+        console.log("uniqueString");
     }
 }
 
