@@ -56,16 +56,12 @@ export function fetchWorkout() {
     }
 }
 
-export function addAction(workout, callback) {
-    try {
-        AsyncStorage.setItem('data', JSON.stringify(workout), () => callback());
-        const newWorkout = AsyncStorage.getItem('data');
-        return {
-            type: ADD_ACTION,
-            payload: newWorkout
-        }
-    } catch (e) {
-        console.log(e);
+export function addAction(workoutData) {
+    const request = AsyncStorage.setItem('data', JSON.stringify(workoutData))
+    .then(() => AsyncStorage.getItem('data'));
+
+    return {
+        type: ADD_ACTION,
+        payload: request
     }
-    
 }

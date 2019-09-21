@@ -13,6 +13,7 @@ import uuid from 'react-native-uuid';
 class Workout extends Component {
     constructor(props) {
         super(props);
+        this._actionList = React.createRef();
         this.state = {
             finishTime: new Date(),
         }
@@ -30,7 +31,7 @@ class Workout extends Component {
             <StyledWorkout>
                 <StatusBar barStyle="light-content"/>
                 <StyledScrollView>
-                    <ActionList data={workout} />
+                    <ActionList ref={this._actionList} data={workout} />
                     <StyledTextButton
                         iconName='add'
                         onPress={this.onCreateActionPress}
@@ -96,10 +97,11 @@ class Workout extends Component {
 
     onCreateActionPress() {
         let {workout} = this.props;
+        const actionCount = workout.workout.action.length + 1;
         const newAction = {
             id: uuid.v1(),
             name: "",
-            pos: workout.workout.action.length + 1,
+            pos: actionCount,
             set: 3,
             rep: 12,
             repDuration: 3,
@@ -108,12 +110,7 @@ class Workout extends Component {
             actionInterval: 120
         };
         workout.workout.action.push(newAction);
-        this.props.addAction(workout, () => {
-            // 滚动到最小面
-
-            // 聚焦于新动作
-            
-        });
+        this.props.addAction(workout);
     }
 }
 
